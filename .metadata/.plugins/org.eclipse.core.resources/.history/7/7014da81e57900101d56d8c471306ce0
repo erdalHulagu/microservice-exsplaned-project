@@ -1,0 +1,5 @@
+package com.erdal.domain;
+
+public class Order {
+
+}

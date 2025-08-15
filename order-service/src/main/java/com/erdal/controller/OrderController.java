@@ -1,0 +1,40 @@
+package com.erdal.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.hibernate.query.Order;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.erdal.common.TransactionRequest;
+import com.erdal.common.TransactionResponse;
+import com.erdal.service.OrderService;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/orders")
+@RequiredArgsConstructor
+public class OrderController {
+	
+private final OrderService orderService;
+	
+@PostMapping("/bookOrders")
+	public Map<String, TransactionResponse> bookOrder(@RequestBody TransactionRequest transactionRequest) {
+		
+		TransactionResponse response=orderService.saveOrder(transactionRequest);
+		Map<String, TransactionResponse> map = new HashMap<>();
+	    map.put(transactionRequest.getOrder().getName()+ "  :", response);
+
+	    return map;
+		
+		
+		
+		
+		
+	}
+
+}

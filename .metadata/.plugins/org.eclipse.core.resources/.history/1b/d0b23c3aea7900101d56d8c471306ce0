@@ -1,0 +1,5 @@
+package com.erdal.repository;
+
+public interface PaymentRepository {
+
+}

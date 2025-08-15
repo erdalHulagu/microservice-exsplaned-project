@@ -1,0 +1,20 @@
+package com.erdal.service;
+
+import org.springframework.stereotype.Service;
+
+import com.erdal.domain.Payment;
+import com.erdal.repository.PaymentRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class PaymentService {
+	
+	private final PaymentRepository paymentRepository;
+	
+	public Payment name() {
+		
+	}
+
+}

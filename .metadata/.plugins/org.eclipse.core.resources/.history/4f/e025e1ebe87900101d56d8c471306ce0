@@ -1,0 +1,22 @@
+package com.erdal.service;
+
+import org.springframework.stereotype.Service;
+
+import com.erdal.domain.Order;
+import com.erdal.repository.OrderRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class OrderService<Srting> {
+
+	private final OrderRepository orderRepository;
+
+	public Order saveOrder(Order order) {
+
+		return orderRepository.save(order);
+
+	}
+
+}

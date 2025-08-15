@@ -1,0 +1,15 @@
+package com.erdal.common;
+
+
+import com.erdal.domain.Order;
+
+import lombok.Data;
+
+@Data
+public class TransactionRequest {
+	
+	private Order order;
+	
+	private PaymentDTO paymentDTO; 
+
+}

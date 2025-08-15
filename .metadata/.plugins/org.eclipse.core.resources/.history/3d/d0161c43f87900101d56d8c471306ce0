@@ -1,0 +1,38 @@
+package com.erdal.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.erdal.common.PaymentDTO;
+import com.erdal.common.TransactionRequest;
+import com.erdal.common.TransactionResponse;
+import com.erdal.domain.Order;
+import com.erdal.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class OrderService {
+
+	private final OrderRepository orderRepository;
+
+	private RestTemplate restTemplate;
+
+	public TransactionResponse saveOrder(TransactionRequest transactionRequest) {
+		
+		String response="";
+		
+		Order order = transactionRequest.getOrder();
+		PaymentDTO payment = transactionRequest.getPaymentDTO();
+		payment.setAmount(order.getPrice());
+
+		// rest call
+		PaymentDTO paymentResponse = restTemplate.postForObject("http://localhost:9191/payment/doPayment", payment,
+				PaymentDTO.class);
+		
+		response=paymentResponse.getPaymentStatus().equals("succes") ?  "payment prossesing succesfull and order placesd" : "there is a failer in payment api ,order added to cart";
+		orderRepository.save(order);
+		return  new TransactionResponse(order,paymentResponse.getAmount(),paymentResponse.getTransactionId(),response);
+	}
+
+}

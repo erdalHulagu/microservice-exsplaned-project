@@ -1,0 +1,10 @@
+package com.erdal.domain;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+@Data
+@Entity
+@Table(name = "tb_order")
+public class Order {
+
+}

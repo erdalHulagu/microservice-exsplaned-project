@@ -1,0 +1,17 @@
+package com.erdal.common;
+
+import lombok.Data;
+
+@Data
+public class PaymentDTO {
+
+	private int paymentId;
+	
+	private String paymentStatus;
+	
+	private String transactiponId;
+	
+	private int orderId;
+	
+	private int amount;
+}

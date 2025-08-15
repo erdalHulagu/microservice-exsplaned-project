@@ -1,0 +1,5 @@
+package com.erdal.common;
+
+public class TransactionResponse {
+
+}
