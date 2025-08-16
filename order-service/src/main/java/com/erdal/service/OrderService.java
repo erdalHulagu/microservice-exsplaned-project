@@ -27,7 +27,7 @@ public class OrderService {
 		payment.setAmount(order.getPrice());
 
 		// rest call
-		Payment paymentResponse = restTemplate.postForObject("http://localhost:9191/payments/doPayment", payment,
+		Payment paymentResponse = restTemplate.postForObject("http://payment-service/payments/doPayment", payment,
 				Payment.class);
 		
 		response=paymentResponse.getPaymentStatus().equals("SUCCES") ?  "payment prossesing succesfull and order placesd" : "there is a failer in payment api ,order added to cart";
