@@ -7,7 +7,9 @@ spring :
    enabled : true 
  application : 
   name : payment-service  
-   
+ cloud :
+  compatibility-verifier :
+   enabled : false  
 eureka : 
  client : 
   enabled: false

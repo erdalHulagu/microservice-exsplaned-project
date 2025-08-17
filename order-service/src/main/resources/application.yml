@@ -7,6 +7,9 @@ spring :
    enabled : true 
  application : 
   name : order-service  
+ cloud :
+  compatibility-verifier :
+   enabled : false
    
 eureka : 
  client : 

@@ -1,5 +1,0 @@
-package com.erdal.dto;
-
-public class TransactionRequest {
-
-}
