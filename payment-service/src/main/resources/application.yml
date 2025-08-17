@@ -12,7 +12,6 @@ spring :
    enabled : false  
 eureka : 
  client : 
-  enabled: false
   register-with-eureka : true
   fetch-registry : true
   service-url :

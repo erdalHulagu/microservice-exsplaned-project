@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="/Users/katiehulagu/Desktop/microservice-exsplaned-project/api-gateway"/>
 			<item value="/Users/katiehulagu/Desktop/microservice-exsplaned-project/service-registry"/>
 			<item value="/Users/katiehulagu/Desktop/microservice-exsplaned-project/payment-service"/>
 			<item value="/Users/katiehulagu/Desktop/microservice-exsplaned-project/order-service"/>

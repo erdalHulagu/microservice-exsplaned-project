@@ -21,7 +21,6 @@ public class PaymentService {
 		payment.setPaymentStatus(paymentProssesing());
 		payment.setTransactiponId(UUID.randomUUID().toString());
 		return paymentRepository.save(payment);
-		
 	}
 public String paymentProssesing() {
 		
@@ -29,5 +28,9 @@ public String paymentProssesing() {
 		
 		return new Random().nextBoolean() ? "SUCCES" :"false";
 	}
+public Payment findpaymentHistoryByOrderid(int orderId) {
+	paymentRepository.findByOrderId(orderId);
+	return null;
+}
 
 }
