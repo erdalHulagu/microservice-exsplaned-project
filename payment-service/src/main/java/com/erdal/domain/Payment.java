@@ -23,7 +23,7 @@ public class Payment {
 	
 	private String paymentStatus;
 	
-	private String transactiponId;
+	private String transactionId;
 	
 	private int orderId;
 	

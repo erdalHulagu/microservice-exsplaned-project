@@ -19,18 +19,18 @@ public class PaymentService {
 	public Payment doPayment(Payment payment) {
 		
 		payment.setPaymentStatus(paymentProssesing());
-		payment.setTransactiponId(UUID.randomUUID().toString());
+		payment.setTransactionId(UUID.randomUUID().toString());
 		return paymentRepository.save(payment);
 	}
 public String paymentProssesing() {
 		
 		// api sould be 3rd party payment (PayPal,Visa,...)
 		
-		return new Random().nextBoolean() ? "SUCCES" :"false";
+		return new Random().nextBoolean() ? "SUCCES" :"FALSE";
 	}
 public Payment findpaymentHistoryByOrderid(int orderId) {
-	paymentRepository.findByOrderId(orderId);
-	return null;
+	return paymentRepository.findByOrderId(orderId);
+	
 }
 
 }

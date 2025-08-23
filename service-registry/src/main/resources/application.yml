@@ -1,12 +1,11 @@
-server :
- port : 8761 
+server:
+  port: 8761
 
-eureka :
- client :
-  register-with-eureka : false
-  fetch-registry : false
+spring:
+  application:
+    name: service-registry
 
-spring :   
- cloud :
-  compatibility-verifier :
-   enabled : false
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

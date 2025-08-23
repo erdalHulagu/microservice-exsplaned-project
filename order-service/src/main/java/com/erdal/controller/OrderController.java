@@ -1,9 +1,5 @@
 package com.erdal.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.hibernate.query.Order;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,25 +12,14 @@ import com.erdal.service.OrderService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/order")
 @RequiredArgsConstructor
 public class OrderController {
-	
-private final OrderService orderService;
-	
-@PostMapping("/bookOrders")
-	public Map<String, TransactionResponse> bookOrder(@RequestBody TransactionRequest transactionRequest) {
-		
-		TransactionResponse response=orderService.saveOrder(transactionRequest);
-		Map<String, TransactionResponse> map = new HashMap<>();
-	    map.put(transactionRequest.getOrder().getName()+ "  :", response);
 
-	    return map;
-		
-		
-		
-		
-		
-	}
+    private final OrderService orderService;
 
+    @PostMapping("/bookOrders")
+    public TransactionResponse bookOrder(@RequestBody TransactionRequest transactionRequest) {
+        return orderService.saveOrder(transactionRequest);
+    }
 }
