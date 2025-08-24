@@ -1,6 +1,7 @@
 package com.erdal.controller;
 
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,13 @@ public class PaymentController {
 	
 
 	@GetMapping("/{orderId}")
-	public Payment findpaymentHistoryByOrderid(@PathVariable int orderId) {
-		return paymentService.findpaymentHistoryByOrderid(orderId);
+	public ResponseEntity<Payment> findpaymentHistoryByOrderid(@PathVariable int orderId) {
+		
+	
+		Payment payment=paymentService.findpaymentHistoryByOrderid(orderId);
+		
+		
+		return ResponseEntity.ok( payment);
 
 	}
 }

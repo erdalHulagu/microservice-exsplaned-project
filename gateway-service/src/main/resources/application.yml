@@ -11,10 +11,20 @@ spring:
           uri: lb://order-service
           predicates:
             - Path=/order/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: orderService
+                fallbackUri: forward:/orderFallBack  
         - id: payment-service
           uri: lb://payment-service
           predicates:
             - Path=/payment/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: paymentService
+                fallbackUri: forward:/paymentFallBack    
 
 eureka:
   client:
@@ -24,3 +34,23 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     hostname: localhost
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      orderService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+      paymentService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
